@@ -1,16 +1,18 @@
 const NYC_BLUE = "#003087";
 const NYC_ORANGE = "#FF6319";
-const NYC_PURPLE = "#9e11ef"
+const NYC_PURPLE = "#9e11ef";
+
+const API_BASE = "https://nyc-311-dashboard-u202.onrender.com";
 
 async function loadSummary() {
-    const response = await fetch("http://127.0.0.1:8000/api/summary");
+    const response = await fetch(`${API_BASE}/api/summary`);
     const data = await response.json();
     document.getElementById("total-complaints").innerText =
         data.total_complaints.toLocaleString();
 }
 
 async function loadAverageResponseTime() {
-    const response = await fetch("http://127.0.0.1:8000/api/average-response-time");
+    const response = await fetch(`${API_BASE}/api/average-response-time`);
     const data = await response.json();
     const element = document.getElementById("avg-response-time");
     element.innerText = data.average_response_time_hours !== null
@@ -19,17 +21,17 @@ async function loadAverageResponseTime() {
 }
 
 async function loadTopAgenciesData() {
-    const response = await fetch("http://127.0.0.1:8000/api/top-agencies");
+    const response = await fetch(`${API_BASE}/api/top-agencies`);
     return await response.json();
 }
 
 async function loadTopComplaintsData() {
-    const response = await fetch("http://127.0.0.1:8000/api/top-complaints");
+    const response = await fetch(`${API_BASE}/api/top-complaints`);
     return await response.json();
 }
 
 async function loadTopBoroughsData() {
-    const response = await fetch("http://127.0.0.1:8000/api/complaints-by-borough");
+    const response = await fetch(`${API_BASE}/api/complaints-by-borough`);
     return await response.json();
 }
 
@@ -141,7 +143,7 @@ document.getElementById("apply-filters").addEventListener("click", async functio
     const borough = document.getElementById("borough-filter").value;
     const complaintType = document.getElementById("complaint-filter").value;
 
-    let url = "http://127.0.0.1:8000/api/search?";
+    let url = `${API_BASE}/api/search?`;
     if (borough) url += "borough=" + borough + "&";
     if (complaintType) url += "complaint_type=" + complaintType;
 
