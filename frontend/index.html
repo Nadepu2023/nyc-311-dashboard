@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC 311 Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <span class="nav-accent">NYC</span>&nbsp;311 Dashboard
+    </nav>
+
+    <div class="container">
+        <div class="summary-cards">
+            <div class="card">
+                <h2>Total Complaints</h2>
+                <p id="total-complaints">Loading...</p>
+            </div>
+
+            <div class="card">
+                <h2>Average Response Time</h2>
+                <p id="avg-response-time">Loading...</p>
+            </div>
+
+            <div class="card">
+                <h2>Top Agency</h2>
+                <p id="top-agency">Loading...</p>
+            </div>
+        </div>
+
+        <div class="chart-section">
+            <h2>Top Agencies by Complaints</h2>
+            <canvas id="agency-chart"></canvas>
+        </div>
+
+        <div class="chart-section">
+            <h2>Top Complaint Types</h2>
+            <canvas id="complaint-chart"></canvas>
+        </div>
+
+        <div class="chart-section">
+            <h2>Complaints by Borough</h2>
+            <canvas id="borough-chart"></canvas>
+        </div>
+
+
+        <div class="filter-section">
+            <select id="borough-filter">
+                <option value="">All Boroughs</option>
+            </select>
+
+            <select id="complaint-filter">
+                <option value="">All Complaint Types</option>
+            </select>
+
+            <button id="apply-filters">Apply Filters</button>
+        </div>
+
+        <div id="search-results"></div>
+
+
+        
+    </div>
+
+    <footer>
+        Data source: <a href="https://data.cityofnewyork.us/" target="_blank">NYC Open Data</a> &middot; NYC 311 Service Requests
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
